@@ -1,0 +1,54 @@
+.superheroCard {
+  min-width: auto;
+  max-width: 450px;
+  height: 400px;
+}
+
+.superheroCardLink {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  color: inherit;
+  text-decoration: none;
+
+  border-radius: var(--border-radius);
+  transition: outline-color var(--transition-duration) var(--timing-function);
+  outline: 1px solid transparent;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    outline-color: var(--primary-text-color);
+  }
+}
+
+.superheroPosterThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.superheroPosterImg {
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  object-fit: cover;
+}
+
+.superheroCardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 15px 20px;
+}
+
+.superheroCardNickname {
+  text-align: center;
+}

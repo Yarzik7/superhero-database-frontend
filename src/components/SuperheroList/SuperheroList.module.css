@@ -1,0 +1,7 @@
+.superheroList {
+  /* display: flex;
+  gap: 30px;
+  flex-wrap: wrap; */
+  display: grid;
+  gap: 15px;
+}
