@@ -9,7 +9,17 @@
 
 2. **Install the dependencies:**
 
-   
+    npm:
+
+   ```bash
+   npm install
+   ```
+
+   yarn:
+
+   ```bash
+   yarn install
+   ```
 
 3. **Running the project:**
 
