@@ -1,0 +1,39 @@
+.superheroPosterThumb {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.superheroPosterImg {
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  object-fit: cover;
+}
+
+.superheroInfoContent {
+  margin-top: 10px;
+}
+
+.superheroInfoRealName {
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--secondary-text-color);
+}
+
+.superheroInfoCatchPhraseBox {
+  margin-top: 10px;
+}
+
+.superheroInfoSuperpowersBox {
+  margin-top: 10px;
+}
+
+.superheroInfoTitle {
+  color: var(--secondary-text-color);
+}
+
+.superheroInfoDescriptionBox {
+  margin-top: 10px;
+}

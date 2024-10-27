@@ -10,8 +10,10 @@ const SuperheroList = () => {
   const superheroes = useSelector(selectSuperheroes);
 
   useEffect(() => {
-    dispatch(getSuperheroes());
-  }, [dispatch]);
+    if (!superheroes.length) {
+      dispatch(getSuperheroes());
+    }
+  }, [dispatch, superheroes.length]);
 
   return (
     <ul className={css.superheroList}>

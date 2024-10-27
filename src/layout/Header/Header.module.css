@@ -3,3 +3,16 @@
   background-color: var(--layouts-bg-color);
   border-bottom: 1px solid var(--primary-text-color);
 }
+
+.headerLogoLink {
+  display: inline-flex;
+  height: var(--layout-height);
+  align-items: center;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: inherit;
+  text-transform: uppercase;
+  list-style: none;
+  text-decoration: none;
+}

@@ -1,19 +1,20 @@
 :root {
   /* Colors */
-  --accent-color: #0818a9;
-  --secondary-accent-color: #0054ca;
+  --accent-color: #44c2fc;
+  --secondary-accent-color: #538594;
   --primary-black-color: #1c1c1c;
   --primary-text-color: #fff;
+  --secondary-text-color: #ffffff98;
   --bg-color: #182026;
   --layouts-bg-color: #243138;
-  --decorator-box-shadow: 0px 3px 10px -3px #1f309e75;
+  --backdrop: rgba(148, 148, 148, 0.5);
 
   /* Sizes */
   --border-radius: 8px;
   --layout-height: 50px;
 
   /* Indents */
-  --padding-container: 15px;
+  --padding-container: 0 15px;
 
   /* Transitions and animations */
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);

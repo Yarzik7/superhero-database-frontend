@@ -1,7 +1,15 @@
 .superheroCard {
-  min-width: auto;
-  max-width: 450px;
-  height: 400px;
+  height: 450px;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 2 * 30px) / 3);
+    height: 350px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-basis: calc((100% - 4 * 30px) / 5);
+    height: 300px;
+  }
 }
 
 .superheroCardLink {

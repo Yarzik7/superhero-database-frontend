@@ -55,9 +55,25 @@ p {
 }
 
 button {
-  /* background-color: transparent;
-  border: none; */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  color: inherit;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: var(--border-radius);
   cursor: pointer;
+  transition: background-color var(--transition-duration) var(--timing-function);
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-accent-color);
+  }
+}
+
+img {
+  display: block;
 }
 
 .visually-hidden {

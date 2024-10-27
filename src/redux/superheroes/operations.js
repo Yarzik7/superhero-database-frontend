@@ -4,21 +4,39 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
 
-// const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async (_, thunkAPI) => {
-//   try {
-//     const response = await axios.get('/superheroes');
-//     return response.data;
-//   } catch (e) {
-//     const { status, message } = e.toJSON();
-//     return thunkAPI.rejectWithValue({ status, message });
-//   }
-// });
-
 const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async (_, thunkAPI) => {
   return await handleErrorAsyncOperation(async () => {
-    const response = await axios.get('/superheroes');
-    return response.data;
+    const { data } = await axios.get('/superheroes');
+    return data;
   }, thunkAPI);
 });
 
-export { getSuperheroes };
+const getSuperheroById = createAsyncThunk('superheroes/getSuperheroById', async (superheroId, thunkAPI) => {
+  return await handleErrorAsyncOperation(async () => {
+    const { data } = await axios.get(`/superheroes/${superheroId}`);
+    return data;
+  }, thunkAPI);
+});
+
+const createSuperhero = createAsyncThunk('superheroes/createSuperhero', async (newSuperhero, thunkAPI) => {
+  return await handleErrorAsyncOperation(async () => {
+    const { data } = await axios.post('/superheroes', newSuperhero);
+    return data;
+  }, thunkAPI);
+});
+
+const updateSuperhero = createAsyncThunk('superheroes/updateSuperhero', async ({ superheroId, updData }, thunkAPI) => {
+  return await handleErrorAsyncOperation(async () => {
+    const { data } = await axios.patch(`/superheroes/${superheroId}`, updData);
+    return data;
+  }, thunkAPI);
+});
+
+const deleteSuperhero = createAsyncThunk('superheroes/deleteSuperhero', async (superheroId, thunkAPI) => {
+  return await handleErrorAsyncOperation(async () => {
+    const { data } = await axios.delete(`/superheroes/${superheroId}`);
+    return data;
+  }, thunkAPI);
+});
+
+export { getSuperheroes, deleteSuperhero, createSuperhero, updateSuperhero, getSuperheroById };

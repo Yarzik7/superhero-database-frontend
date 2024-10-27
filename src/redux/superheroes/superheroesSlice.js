@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSuperheroes } from './operations';
-import * as superheroReducers from '../../utils/reduxActionHandlers/getSuperheroActionHandlers/handleGetSuperheroes';
+import { getSuperheroes, deleteSuperhero, createSuperhero, getSuperheroById, updateSuperhero } from './operations';
+import * as superheroReducers from '../../utils/reduxActionHandlers/superheroesActionHandlers';
 
 const initialState = { items: [], isLoading: false, isDeleting: false, currentSuperheroId: null, error: null };
 
@@ -11,7 +11,20 @@ const superheroesSlice = createSlice({
     builder
       .addCase(getSuperheroes.pending, superheroReducers.handleGetSuperheroesPending)
       .addCase(getSuperheroes.fulfilled, superheroReducers.handleGetSuperheroesFulfilled)
-      .addCase(getSuperheroes.rejected, superheroReducers.handleGetSuperheroesRejected),
+      .addCase(getSuperheroes.rejected, superheroReducers.handleGetSuperheroesRejected)
+      .addCase(getSuperheroById.pending, superheroReducers.handleGetSuperheroByIdPending)
+      .addCase(getSuperheroById.fulfilled, superheroReducers.handleGetSuperheroByIdFulfilled)
+      .addCase(getSuperheroById.rejected, superheroReducers.handleGetSuperheroByIdRejected)
+      .addCase(deleteSuperhero.pending, superheroReducers.handleDeleteSuperheroesPending)
+      .addCase(deleteSuperhero.fulfilled, superheroReducers.handleDeleteSuperheroesFulfilled)
+      .addCase(deleteSuperhero.rejected, superheroReducers.handleDeleteSuperheroesRejected)
+      .addCase(createSuperhero.pending, superheroReducers.handleCreateSuperheroesPending)
+      .addCase(createSuperhero.fulfilled, superheroReducers.handleCreateSuperheroesFulfilled)
+      .addCase(createSuperhero.rejected, superheroReducers.handleCreateSuperheroesRejected)
+      .addCase(updateSuperhero.pending, superheroReducers.handleUpdateSuperheroesPending)
+      .addCase(updateSuperhero.fulfilled, superheroReducers.handleUpdateSuperheroesFulfilled)
+      .addCase(updateSuperhero.rejected, superheroReducers.handleUpdateSuperheroesRejected),
 });
 
+export const { setCurrentSuperheroId } = superheroesSlice.actions;
 export const superheroesReducer = superheroesSlice.reducer;

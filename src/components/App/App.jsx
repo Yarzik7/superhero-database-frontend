@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="superheroes/:superheroId" element={<SuperheroDetailsPage />} />
+        <Route path=":superheroId" element={<SuperheroDetailsPage />} />
         <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>

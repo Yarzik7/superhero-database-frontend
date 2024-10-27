@@ -1,7 +1,7 @@
-import React from 'react';
+import SuperheroDetailsSection from './sections/SuperheroDetailsSection/SuperheroDetailsSection';
 
 const SuperheroDetailsPage = () => {
-  return <div>SuperheroDetailsPage</div>;
+  return <SuperheroDetailsSection />;
 };
 
 export default SuperheroDetailsPage;

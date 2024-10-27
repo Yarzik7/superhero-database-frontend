@@ -1,0 +1,5 @@
+.superpowerList {
+  max-height: 70px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
