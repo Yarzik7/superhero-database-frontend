@@ -4,9 +4,9 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
 
-const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async (_, thunkAPI) => {
+const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async ({ page }, thunkAPI) => {
   return await handleErrorAsyncOperation(async () => {
-    const { data } = await axios.get('/superheroes');
+    const { data } = await axios.get(`/superheroes?page=${page}&limit=5`);
     return data;
   }, thunkAPI);
 });

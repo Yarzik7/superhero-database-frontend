@@ -6,7 +6,7 @@ const handleGetSuperheroesPending = state => {
 const handleGetSuperheroesFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.items = [...state.items, ...payload];
+  state.items = [...payload];
 };
 
 const handleGetSuperheroesRejected = (state, { payload }) => {

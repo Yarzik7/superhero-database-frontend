@@ -1,3 +1,9 @@
+.loaderBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .superheroList {
   display: flex;
   flex-direction: column;
@@ -8,4 +14,15 @@
     flex-direction: row;
     gap: 30px;
   }
+}
+
+.superheroListLoadButton {
+  display: flex;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
