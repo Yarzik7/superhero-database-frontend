@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createSuperhero, updateSuperhero } from '../../redux/superheroes/operations';
 import { useDispatch } from 'react-redux';
 import Form from '../Form/Form';
+import SuperheroImagesControl from './SuperheroImagesControl/SuperheroImagesControl';
 import Input from '../Input/Input';
 import SuperpowerList from '../SuperpowerList/SuperpowerList';
 
@@ -12,6 +13,8 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
   const [superpower, setSuperpower] = useState('');
   const [superpowers, setSuperpowers] = useState(currentSuperhero?.superpowers ?? []);
   const [catch_phrase, setCatchPhrase] = useState(currentSuperhero?.catch_phrase ?? '');
+
+  const [images, setImages] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -107,6 +110,7 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
 
   return (
     <Form buttonCaption={`${currentSuperhero ? 'Update' : 'Add'} superhero`} onSubmit={handleSubmit}>
+      <SuperheroImagesControl images={images} setImages={setImages} />
       <Input label="Nickname" name="nickname" onChange={handleChange} value={nickname} />
       <Input label="Real name" name="real_name" onChange={handleChange} value={real_name} />
       <Input label="Catch phrase" name="catch_phrase" onChange={handleChange} value={catch_phrase} />
