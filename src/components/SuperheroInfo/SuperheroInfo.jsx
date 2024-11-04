@@ -46,7 +46,7 @@ const SuperheroInfo = () => {
           </li>
         )}
         {superheroData.images.map(image => (
-          <li className={css.superheroPosterThumbItem}>
+          <li key={image._id} className={css.superheroPosterThumbItem}>
             <img
               src={image.url ?? superheroDefault}
               alt={superheroData.nickname}
