@@ -19,20 +19,38 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
   const dispatch = useDispatch();
 
   const handleCreateSuperheroData = () => {
-    const contactData = {};
-    const contactDataPairs = Object.entries({ nickname, real_name, original_description, superpowers, catch_phrase });
+    const superheroData = {};
 
-    for (const pair of contactDataPairs) {
-      if (currentSuperhero?.[pair[0]] !== pair[1]) {
-        contactData[pair[0]] = pair[1];
+    const superheroDataPairs = Object.entries({
+      nickname,
+      real_name,
+      original_description,
+      superpowers,
+      catch_phrase,
+    });
+
+    for (const [key, value] of superheroDataPairs) {
+      if (currentSuperhero?.[key] !== value) {
+        superheroData[[key]] = value;
       }
     }
 
-    return contactData;
+    return superheroData;
+  };
+
+  const handleCreateSuperheroImageData = () => {
+    const superheroImageData = new FormData();
+
+    images.forEach(image => {
+      superheroImageData.append('superhero_image', image.file);
+    });
+
+    return superheroImageData;
   };
 
   const handleSubmit = async () => {
     const superheroData = handleCreateSuperheroData();
+    const superheroImageData = handleCreateSuperheroImageData();
 
     if (!Object.keys(superheroData).length) {
       alert('Update at least one field!');
@@ -47,13 +65,17 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
     const operationResult = await dispatch(
       currentSuperhero
         ? updateSuperhero({ superheroId: currentSuperhero._id, updData: superheroData })
-        : createSuperhero({ ...superheroData })
+        : createSuperhero({ superheroData, superheroImageData })
     );
 
     if (operationResult.error) {
       alert(operationResult.payload.message);
       return;
     }
+
+    images.forEach(image => {
+      image.src && URL.revokeObjectURL(image.src);
+    });
 
     setSuperheroData && setSuperheroData(operationResult.payload);
     reset();

@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSuperheroes, deleteSuperhero, createSuperhero, getSuperheroById, updateSuperhero } from './operations';
+import {
+  getSuperheroes,
+  deleteSuperhero,
+  createSuperhero,
+  getSuperheroById,
+  updateSuperhero,
+  createSuperheroImage,
+} from './operations';
 import * as superheroReducers from '../../utils/reduxActionHandlers/superheroesActionHandlers';
 
 const initialState = { items: [], isLoading: false, isDeleting: false, currentSuperheroId: null, error: null };
@@ -23,7 +30,10 @@ const superheroesSlice = createSlice({
       .addCase(createSuperhero.rejected, superheroReducers.handleCreateSuperheroesRejected)
       .addCase(updateSuperhero.pending, superheroReducers.handleUpdateSuperheroesPending)
       .addCase(updateSuperhero.fulfilled, superheroReducers.handleUpdateSuperheroesFulfilled)
-      .addCase(updateSuperhero.rejected, superheroReducers.handleUpdateSuperheroesRejected),
+      .addCase(updateSuperhero.rejected, superheroReducers.handleUpdateSuperheroesRejected)
+      .addCase(createSuperheroImage.pending, superheroReducers.handleCreateSuperheroImagePending)
+      .addCase(createSuperheroImage.fulfilled, superheroReducers.handleCreateSuperheroImageFulfilled)
+      .addCase(createSuperheroImage.rejected, superheroReducers.handleCreateSuperheroImageRejected),
 });
 
 export const { setCurrentSuperheroId } = superheroesSlice.actions;

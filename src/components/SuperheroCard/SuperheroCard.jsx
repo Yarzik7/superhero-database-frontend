@@ -9,7 +9,12 @@ const SuperheroCard = ({ data }) => {
     <li className={css.superheroCard}>
       <Link to={`/${data._id}`} state={{ from: location }} className={css.superheroCardLink}>
         <div className={css.superheroPosterThumb}>
-          <img src={superheroDefault} alt={data.nickname} loading="lazy" className={css.superheroPosterImg} />
+          <img
+            src={data.images?.[0].url ?? superheroDefault}
+            alt={data.nickname}
+            loading="lazy"
+            className={css.superheroPosterImg}
+          />
         </div>
         <div className={css.superheroCardContent}>
           <h3 className={css.superheroCardNickname}>{data.nickname}</h3>

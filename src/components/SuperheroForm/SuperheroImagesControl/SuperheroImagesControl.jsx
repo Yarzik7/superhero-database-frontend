@@ -14,7 +14,7 @@ const SuperheroImagesControl = ({ images, setImages }) => {
     setImages(prevImages => {
       const imageToDelete = prevImages.find(({ id }) => id === imageId);
       if (imageToDelete) {
-        URL.revokeObjectURL(imageToDelete.url);
+        URL.revokeObjectURL(imageToDelete.src);
       }
       return prevImages.filter(({ id }) => id !== imageId);
     });
@@ -22,9 +22,13 @@ const SuperheroImagesControl = ({ images, setImages }) => {
 
   const onFileInputChange = e => {
     const files = [...e.target.files];
-    console.log(files);
-    const fileUrls = files.map(file => ({ id: crypto.randomUUID(), url: URL.createObjectURL(file) }));
-    console.log(fileUrls);
+    if (files.length > 7) {
+      files.splice(7, files.length - 1);
+      alert('A maximum of 7 images have been uploaded.');
+    }
+    // console.log(files);
+    const fileUrls = files.map(file => ({ id: crypto.randomUUID(), src: URL.createObjectURL(file), file }));
+    // console.log(fileUrls);
     setImages(prev => [...fileUrls, ...prev]);
   };
 
@@ -41,7 +45,7 @@ const SuperheroImagesControl = ({ images, setImages }) => {
             >
               X
             </button>
-            <img src={image.url ?? superheroDefault} alt="superhero" className={css.superheroImage} />
+            <img src={image.url ?? image.src ?? superheroDefault} alt="superhero" className={css.superheroImage} />
           </li>
         ))}
       </ul>

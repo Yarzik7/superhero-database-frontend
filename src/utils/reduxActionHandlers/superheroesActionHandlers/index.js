@@ -28,6 +28,12 @@ import {
   handleUpdateSuperheroesRejected,
 } from './updateSuperheroActionHandlers/handleUpdateSuperheroes';
 
+import {
+  handleCreateSuperheroImagePending,
+  handleCreateSuperheroImageFulfilled,
+  handleCreateSuperheroImageRejected,
+} from './createSuperheroImageActionHandlers/handleCreateSuperheroImage';
+
 export {
   handleGetSuperheroesPending,
   handleGetSuperheroesFulfilled,
@@ -44,4 +50,7 @@ export {
   handleUpdateSuperheroesPending,
   handleUpdateSuperheroesFulfilled,
   handleUpdateSuperheroesRejected,
+  handleCreateSuperheroImagePending,
+  handleCreateSuperheroImageFulfilled,
+  handleCreateSuperheroImageRejected,
 };

@@ -3,10 +3,10 @@ const handleCreateSuperheroesPending = state => {
   state.isLoading = true;
 };
 
-const handleCreateSuperheroesFulfilled = (state, { payload }) => {
+const handleCreateSuperheroesFulfilled = (state, { payload: { createdSuperheroData, imageUploadError } }) => {
   state.isLoading = false;
-  state.error = null;
-  state.items.push(payload);
+  state.error = imageUploadError;
+  state.items.push(createdSuperheroData);
 };
 
 const handleCreateSuperheroesRejected = (state, { payload }) => {
