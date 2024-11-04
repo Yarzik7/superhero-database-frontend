@@ -77,7 +77,7 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
       image.src && URL.revokeObjectURL(image.src);
     });
 
-    setSuperheroData && setSuperheroData(operationResult.payload);
+    setSuperheroData && setSuperheroData(prev => ({ ...prev, ...operationResult.payload }));
     reset();
     onCloseModal();
   };
