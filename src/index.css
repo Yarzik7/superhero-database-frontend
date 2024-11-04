@@ -70,6 +70,10 @@ button {
   &:focus {
     background-color: var(--secondary-accent-color);
   }
+
+  &:disabled {
+    background-color: var(--backdrop);
+  }
 }
 
 img {

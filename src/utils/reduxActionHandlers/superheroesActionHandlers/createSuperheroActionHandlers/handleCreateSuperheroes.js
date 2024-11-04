@@ -6,7 +6,7 @@ const handleCreateSuperheroesPending = state => {
 const handleCreateSuperheroesFulfilled = (state, { payload: { createdSuperheroData, imageUploadError } }) => {
   state.isLoading = false;
   state.error = imageUploadError;
-  state.items.push(createdSuperheroData);
+  state.items.unshift(createdSuperheroData);
 };
 
 const handleCreateSuperheroesRejected = (state, { payload }) => {

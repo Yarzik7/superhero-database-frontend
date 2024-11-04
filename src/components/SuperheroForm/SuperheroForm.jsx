@@ -14,7 +14,7 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
   const [superpowers, setSuperpowers] = useState(currentSuperhero?.superpowers ?? []);
   const [catch_phrase, setCatchPhrase] = useState(currentSuperhero?.catch_phrase ?? '');
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(currentSuperhero?.images ?? []);
 
   const dispatch = useDispatch();
 
@@ -69,7 +69,7 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
     );
 
     if (operationResult.error) {
-      alert(operationResult.payload.message);
+      alert(operationResult.payload?.message);
       return;
     }
 
@@ -132,7 +132,12 @@ const SuperheroForm = ({ currentSuperhero, onCloseModal, setSuperheroData }) => 
 
   return (
     <Form buttonCaption={`${currentSuperhero ? 'Update' : 'Add'} superhero`} onSubmit={handleSubmit}>
-      <SuperheroImagesControl images={images} setImages={setImages} />
+      <SuperheroImagesControl
+        images={images}
+        setImages={setImages}
+        setSuperheroData={setSuperheroData}
+        superheroId={currentSuperhero?._id}
+      />
       <Input label="Nickname" name="nickname" onChange={handleChange} value={nickname} />
       <Input label="Real name" name="real_name" onChange={handleChange} value={real_name} />
       <Input label="Catch phrase" name="catch_phrase" onChange={handleChange} value={catch_phrase} />

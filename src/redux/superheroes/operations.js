@@ -2,8 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handleErrorAsyncOperation } from '../../utils/handleErrorAsyncOperation';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
 
 const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async ({ page }, thunkAPI) => {
   return await handleErrorAsyncOperation(async () => {
@@ -24,17 +23,13 @@ const createSuperhero = createAsyncThunk(
   async ({ superheroData, superheroImageData }, thunkAPI) => {
     return await handleErrorAsyncOperation(async () => {
       const { data: createdSuperheroData } = await axios.post('/superheroes', superheroData);
-      // console.log('createdSH: ', createdSuperheroData);
       let imageUploadError = null;
 
       if (superheroImageData.has('superhero_image')) {
         try {
           superheroImageData.append('superheroId', createdSuperheroData._id);
-          // console.log('shim: ', [...superheroImageData.entries()]);
           const { data: createdSuperheroImageData } = await axios.post('/superheroimages', superheroImageData);
-          // console.log('createdSHImg: ', createdSuperheroImageData);
           createdSuperheroData.images = createdSuperheroImageData;
-          console.log('createdSHD: ', createdSuperheroData);
         } catch (e) {
           imageUploadError = e.JSON();
         }
@@ -61,12 +56,30 @@ const deleteSuperhero = createAsyncThunk('superheroes/deleteSuperhero', async (s
 
 const createSuperheroImage = createAsyncThunk(
   'superheroes/createSuperheroImage',
-  async (newSuperheroImages, thunkAPI) => {
+  async (superheroImageData, thunkAPI) => {
     return await handleErrorAsyncOperation(async () => {
-      const { data } = await axios.post('/superheroes/superheroimages', newSuperheroImages);
+      const { data } = await axios.post('/superheroimages', superheroImageData);
       return data;
     }, thunkAPI);
   }
 );
 
-export { getSuperheroes, deleteSuperhero, createSuperhero, updateSuperhero, getSuperheroById, createSuperheroImage };
+const deleteSuperheroImage = createAsyncThunk(
+  'superheroes/deleteSuperheroImage',
+  async (superheroImageId, thunkAPI) => {
+    return await handleErrorAsyncOperation(async () => {
+      const { data } = await axios.delete(`/superheroimages/${superheroImageId}`);
+      return data;
+    }, thunkAPI);
+  }
+);
+
+export {
+  getSuperheroes,
+  deleteSuperhero,
+  createSuperhero,
+  updateSuperhero,
+  getSuperheroById,
+  createSuperheroImage,
+  deleteSuperheroImage,
+};

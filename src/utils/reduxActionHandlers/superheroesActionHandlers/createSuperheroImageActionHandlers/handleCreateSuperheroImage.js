@@ -6,7 +6,6 @@ const handleCreateSuperheroImagePending = state => {
 const handleCreateSuperheroImageFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.items.push(payload);
 };
 
 const handleCreateSuperheroImageRejected = (state, { payload }) => {

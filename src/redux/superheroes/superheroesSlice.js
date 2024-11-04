@@ -6,6 +6,7 @@ import {
   getSuperheroById,
   updateSuperhero,
   createSuperheroImage,
+  deleteSuperheroImage,
 } from './operations';
 import * as superheroReducers from '../../utils/reduxActionHandlers/superheroesActionHandlers';
 
@@ -33,7 +34,10 @@ const superheroesSlice = createSlice({
       .addCase(updateSuperhero.rejected, superheroReducers.handleUpdateSuperheroesRejected)
       .addCase(createSuperheroImage.pending, superheroReducers.handleCreateSuperheroImagePending)
       .addCase(createSuperheroImage.fulfilled, superheroReducers.handleCreateSuperheroImageFulfilled)
-      .addCase(createSuperheroImage.rejected, superheroReducers.handleCreateSuperheroImageRejected),
+      .addCase(createSuperheroImage.rejected, superheroReducers.handleCreateSuperheroImageRejected)
+      .addCase(deleteSuperheroImage.pending, superheroReducers.handleDeleteSuperheroImagePending)
+      .addCase(deleteSuperheroImage.fulfilled, superheroReducers.handleDeleteSuperheroImageFulfilled)
+      .addCase(deleteSuperheroImage.rejected, superheroReducers.handleDeleteSuperheroImageRejected),
 });
 
 export const { setCurrentSuperheroId } = superheroesSlice.actions;

@@ -34,6 +34,12 @@ import {
   handleCreateSuperheroImageRejected,
 } from './createSuperheroImageActionHandlers/handleCreateSuperheroImage';
 
+import {
+  handleDeleteSuperheroImagePending,
+  handleDeleteSuperheroImageFulfilled,
+  handleDeleteSuperheroImageRejected,
+} from './deleteSuperheroImageActionHandlers/handleDeleteSuperheroImage';
+
 export {
   handleGetSuperheroesPending,
   handleGetSuperheroesFulfilled,
@@ -53,4 +59,7 @@ export {
   handleCreateSuperheroImagePending,
   handleCreateSuperheroImageFulfilled,
   handleCreateSuperheroImageRejected,
+  handleDeleteSuperheroImagePending,
+  handleDeleteSuperheroImageFulfilled,
+  handleDeleteSuperheroImageRejected,
 };

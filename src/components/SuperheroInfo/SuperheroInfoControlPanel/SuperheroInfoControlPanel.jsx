@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from '../../../redux/superheroes/selectors';
 import { deleteSuperhero } from '../../../redux/superheroes/operations';
 import Modal from '../../Modal/Modal';
 import SuperheroForm from '../../SuperheroForm/SuperheroForm';
@@ -12,6 +13,7 @@ const SuperheroInfoControlPanel = ({ superheroData, setSuperheroData }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { superheroId } = useParams();
+  const isLoading = useSelector(selectIsLoading);
 
   const onToggleModal = () => setShowModal(!showModal);
 
@@ -29,9 +31,15 @@ const SuperheroInfoControlPanel = ({ superheroData, setSuperheroData }) => {
   };
   return (
     <div className={css.superheroInfoControlPanel}>
-      <button onClick={onNavigateToBack}>Go back</button>
-      <button onClick={onUpdateSuperhero}>Edit</button>
-      <button onClick={onDeleteSuperhero}>Delete</button>
+      <button disabled={isLoading ? true : false} onClick={onNavigateToBack}>
+        Go back
+      </button>
+      <button disabled={isLoading ? true : false} onClick={onUpdateSuperhero}>
+        Edit
+      </button>
+      <button disabled={isLoading ? true : false} onClick={onDeleteSuperhero}>
+        Delete
+      </button>
       {showModal && (
         <Modal onClose={onToggleModal}>
           <SuperheroForm

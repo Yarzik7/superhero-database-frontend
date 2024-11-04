@@ -31,7 +31,12 @@ const SuperheroInfo = () => {
       <SuperheroInfoControlPanel superheroData={superheroData} setSuperheroData={setSuperheroData} />
 
       <div className={css.superheroPosterThumb}>
-        <img src={superheroDefault} alt={superheroData.nickname} loading="lazy" className={css.superheroPosterImg} />
+        <img
+          src={superheroData.images?.[0]?.url ?? superheroDefault}
+          alt={superheroData.nickname}
+          loading="lazy"
+          className={css.superheroPosterImg}
+        />
       </div>
 
       <div className={css.superheroInfoContent}>

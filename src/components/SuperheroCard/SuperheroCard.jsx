@@ -10,7 +10,7 @@ const SuperheroCard = ({ data }) => {
       <Link to={`/${data._id}`} state={{ from: location }} className={css.superheroCardLink}>
         <div className={css.superheroPosterThumb}>
           <img
-            src={data.images?.[0].url ?? superheroDefault}
+            src={data.images?.[0]?.url ?? superheroDefault}
             alt={data.nickname}
             loading="lazy"
             className={css.superheroPosterImg}
