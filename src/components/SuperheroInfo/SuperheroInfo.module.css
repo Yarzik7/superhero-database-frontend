@@ -1,13 +1,23 @@
 .superheroPosterThumb {
+  display: flex;
+  gap: 10px;
   margin-top: 20px;
   width: 100%;
-  height: auto;
+  height: 300px;
+
+  overflow: hidden;
+  overflow-x: auto;
 
   @media screen and (min-width: 768px) {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.superheroPosterThumbItem {
+  min-width: 95%;
+  height: 100%;
 }
 
 .superheroPosterImg {

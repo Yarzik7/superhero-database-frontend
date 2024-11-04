@@ -8,7 +8,7 @@ import superheroDefault from '../../assets/images/superhero-default.jpg';
 import css from './SuperheroInfo.module.css';
 
 const SuperheroInfo = () => {
-  const [superheroData, setSuperheroData] = useState({});
+  const [superheroData, setSuperheroData] = useState(null);
   const dispatch = useDispatch();
   const { superheroId } = useParams();
 
@@ -26,18 +26,36 @@ const SuperheroInfo = () => {
     getSuperheroData();
   }, [dispatch, superheroId]);
 
+  if (!superheroData) {
+    return <></>;
+  }
+
   return (
     <div className={css.superheroInfoContainer}>
       <SuperheroInfoControlPanel superheroData={superheroData} setSuperheroData={setSuperheroData} />
 
-      <div className={css.superheroPosterThumb}>
-        <img
-          src={superheroData.images?.[0]?.url ?? superheroDefault}
-          alt={superheroData.nickname}
-          loading="lazy"
-          className={css.superheroPosterImg}
-        />
-      </div>
+      <ul className={css.superheroPosterThumb}>
+        {!superheroData.images.length && (
+          <li className={css.superheroPosterThumbItem}>
+            <img
+              src={superheroDefault}
+              alt={superheroData.nickname}
+              loading="lazy"
+              className={css.superheroPosterImg}
+            />
+          </li>
+        )}
+        {superheroData.images.map(image => (
+          <li className={css.superheroPosterThumbItem}>
+            <img
+              src={image.url ?? superheroDefault}
+              alt={superheroData.nickname}
+              loading="lazy"
+              className={css.superheroPosterImg}
+            />
+          </li>
+        ))}
+      </ul>
 
       <div className={css.superheroInfoContent}>
         <h1 className={css.superheroInfoNickname}>{superheroData.nickname}</h1>
