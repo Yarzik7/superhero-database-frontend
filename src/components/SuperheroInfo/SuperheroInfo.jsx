@@ -35,7 +35,7 @@ const SuperheroInfo = () => {
       <SuperheroInfoControlPanel superheroData={superheroData} setSuperheroData={setSuperheroData} />
 
       <ul className={css.superheroPosterThumb}>
-        {!superheroData.images.length && (
+        {!superheroData?.images?.length && (
           <li className={css.superheroPosterThumbItem}>
             <img
               src={superheroDefault}
@@ -45,16 +45,17 @@ const SuperheroInfo = () => {
             />
           </li>
         )}
-        {superheroData.images.map(image => (
-          <li key={image._id} className={css.superheroPosterThumbItem}>
-            <img
-              src={image.url ?? superheroDefault}
-              alt={superheroData.nickname}
-              loading="lazy"
-              className={css.superheroPosterImg}
-            />
-          </li>
-        ))}
+        {superheroData?.images &&
+          superheroData.images.map(image => (
+            <li key={image._id} className={css.superheroPosterThumbItem}>
+              <img
+                src={image.url ?? superheroDefault}
+                alt={superheroData.nickname}
+                loading="lazy"
+                className={css.superheroPosterImg}
+              />
+            </li>
+          ))}
       </ul>
 
       <div className={css.superheroInfoContent}>
