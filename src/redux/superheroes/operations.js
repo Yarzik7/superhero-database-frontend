@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handleErrorAsyncOperation } from '../../utils/handleErrorAsyncOperation';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
+// axios.defaults.baseURL = 'https://superhero-database-backend-toy7.onrender.com';
+axios.defaults.baseURL = 'https://superhero-database-backend-production.up.railway.app';
 
 const getSuperheroes = createAsyncThunk('superheroes/getSuperheroes', async ({ page }, thunkAPI) => {
   return await handleErrorAsyncOperation(async () => {
